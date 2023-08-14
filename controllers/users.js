@@ -97,6 +97,7 @@ module.exports.updateProfile = (req, res) => {
     { name, about },
     { new: true, runValidators: true },
   )
+    .orFail()
     .then((user) => res.status(OK_STATUS).send(user))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
